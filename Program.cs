@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using MeetUp.Models;
+using MeetUp.Profiles;
 
 namespace MeetUp;
 
@@ -10,9 +14,12 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
+        builder.Services.AddDbContext<MeetUpContext>(opt =>
+            opt.UseNpgsql("MeetUps"));
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         var app = builder.Build();
 
