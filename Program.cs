@@ -77,6 +77,7 @@ public class Program
         app.UseAuthentication();
         app.UseAuthorization();
 
+        // https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-authn?view=aspnetcore-7.0&tabs=linux
         app.MapControllers().RequireAuthorization();
 
         app.Run();
